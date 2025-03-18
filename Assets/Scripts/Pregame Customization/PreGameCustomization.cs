@@ -43,3 +43,4 @@ public class PreGameCustomization : MonoBehaviour
         SceneManager.LoadScene("1_CommonRoom");
     }
 }
+
