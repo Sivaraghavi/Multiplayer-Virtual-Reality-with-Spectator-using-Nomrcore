@@ -6,18 +6,26 @@ using TMPro;
 public class PreGameCustomization : MonoBehaviour
 {
     public TMP_InputField nameInputField;
-    public Dropdown colorDropdown; 
+    public TMP_Dropdown colorDropdown; 
     public Button readyButton;
 
     void Start()
     {
+        Debug.Log("[DEBUG] PreGameCustomization script started");
+        nameInputField.onValueChanged.AddListener(UpdatePlayerName);
         readyButton.onClick.AddListener(OnReadyClicked);
+
+        Debug.Log("PreGameCustomization Initialized");
+    }
+    void UpdatePlayerName(string newName)
+    {
+        CustomizationData.PlayerName = string.IsNullOrEmpty(newName) ? "Player" : newName;
+        Debug.Log("Player Name Updated: " + CustomizationData.PlayerName);
     }
 
     void OnReadyClicked()
     {
-        
-        CustomizationData.PlayerName = string.IsNullOrEmpty(nameInputField.text) ? "Player" : nameInputField.text;
+       
 
         
         switch (colorDropdown.value)
@@ -29,7 +37,9 @@ public class PreGameCustomization : MonoBehaviour
             default: CustomizationData.PlayerColor = Color.white; break;
         }
 
-        
+        Debug.Log($"Final Selection -> Name: {CustomizationData.PlayerName}, Color: {CustomizationData.PlayerColor}");
+
+
         SceneManager.LoadScene("1_CommonRoom");
     }
 }
