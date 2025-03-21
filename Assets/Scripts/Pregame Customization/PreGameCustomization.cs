@@ -8,6 +8,7 @@ public class PreGameCustomization : MonoBehaviour
     public TMP_InputField nameInputField;
     public TMP_Dropdown colorDropdown; 
     public Button readyButton;
+// nothing just a comment so that i can merge the file 
 
     void Start()
     {
