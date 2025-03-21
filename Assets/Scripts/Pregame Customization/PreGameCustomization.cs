@@ -1,47 +1,48 @@
+
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 using TMPro;
+using System.Collections.Generic;
 
 public class PreGameCustomization : MonoBehaviour
 {
     public TMP_InputField nameInputField;
-    public TMP_Dropdown colorDropdown; 
+    public TMP_Dropdown colorDropdown;
     public Button readyButton;
-// nothing just a comment so that i can merge the file 
+    public Material[] colorMaterials; // Assign 5 materials in inspector
 
     void Start()
     {
-        Debug.Log("[DEBUG] PreGameCustomization script started");
+        InitializeColorDropdown();
         nameInputField.onValueChanged.AddListener(UpdatePlayerName);
         readyButton.onClick.AddListener(OnReadyClicked);
-
-        Debug.Log("PreGameCustomization Initialized");
     }
+
+    void InitializeColorDropdown()
+    {
+        colorDropdown.ClearOptions();
+        colorDropdown.AddOptions(new List<string> { "Red", "Blue", "Green", "Yellow", "Cyan" });
+        colorDropdown.onValueChanged.AddListener(UpdatePlayerColor);
+    }
+
     void UpdatePlayerName(string newName)
     {
         CustomizationData.PlayerName = string.IsNullOrEmpty(newName) ? "Player" : newName;
-        Debug.Log("Player Name Updated: " + CustomizationData.PlayerName);
+    }
+
+    void UpdatePlayerColor(int colorIndex)
+    {
+        if (colorIndex >= 0 && colorIndex < colorMaterials.Length)
+        {
+            CustomizationData.PlayerMaterial = colorMaterials[colorIndex];
+        }
     }
 
     void OnReadyClicked()
     {
-       
-
-        
-        switch (colorDropdown.value)
-        {
-            case 0: CustomizationData.PlayerColor = Color.red; break;
-            case 1: CustomizationData.PlayerColor = Color.blue; break;
-            case 2: CustomizationData.PlayerColor = Color.green; break;
-            // Add more cases as needed.
-            default: CustomizationData.PlayerColor = Color.white; break;
-        }
-
-        Debug.Log($"Final Selection -> Name: {CustomizationData.PlayerName}, Color: {CustomizationData.PlayerColor}");
-
-
+        PlayerPrefs.SetString("PlayerName", CustomizationData.PlayerName);
+        PlayerPrefs.SetInt("ColorIndex", colorDropdown.value);
         SceneManager.LoadScene("1_CommonRoom");
     }
 }
-

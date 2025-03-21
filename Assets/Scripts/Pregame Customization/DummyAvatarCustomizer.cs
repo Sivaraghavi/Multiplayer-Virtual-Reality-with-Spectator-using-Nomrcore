@@ -1,30 +1,33 @@
+// Only head color change
+
 using TMPro;
 using UnityEngine;
 
 public class DummyAvatarCustomizer : MonoBehaviour
 {
     [Header("References")]
-    public TextMeshProUGUI nameTag;  
-    public MeshRenderer[] bodyMeshes;  // Array to hold head, hands, and body mesh renderers
+    public TextMeshProUGUI nameTag;
+    public MeshRenderer[] bodyMeshes;
+
 
     void Start()
     {
-        if (nameTag == null) Debug.LogError("NameTag is NOT assigned in DummyAvatarCustomizer!");
-        if (bodyMeshes == null || bodyMeshes.Length == 0) Debug.LogError("BodyMeshes are NOT assigned in DummyAvatarCustomizer!");
+        // Create material instances to avoid shared materials
+        foreach (var renderer in bodyMeshes)
+        {
+            renderer.material = new Material(renderer.material);
+        }
     }
 
     void Update()
     {
-        if (nameTag != null)
-            nameTag.text = CustomizationData.PlayerName;  // Update the name tag text
+        nameTag.text = CustomizationData.PlayerName;
 
-        if (bodyMeshes != null && bodyMeshes.Length > 0)
+        foreach (var mesh in bodyMeshes)
         {
-            foreach (MeshRenderer mesh in bodyMeshes)
-            {
-                if (mesh != null)
-                    mesh.material.color = CustomizationData.PlayerColor;  // Apply color to all body parts
-            }
+            mesh.material.color = CustomizationData.PlayerMaterial.color;
         }
     }
 }
+
+
