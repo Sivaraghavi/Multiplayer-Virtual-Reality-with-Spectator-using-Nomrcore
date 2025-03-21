@@ -1407,6 +1407,8 @@ MonoBehaviour:
     component: {fileID: 0}
   - componentID: 5
     component: {fileID: 0}
+  - componentID: 6
+    component: {fileID: 7997272052352895255}
   _childViews:
   - componentID: 1
     component: {fileID: 2377840826920159308}
@@ -1459,6 +1461,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 904147e4af24bbf4aa7ea70791ba7943, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  nameTag: {fileID: 5781858142099983418}
+  bodyMeshes:
+  - {fileID: 102649018108433837}
+  bodySkinnedMeshes:
+  - {fileID: 2014822948198847731}
+  - {fileID: 7127092909984707}
+  colorMaterials:
+  - {fileID: 2100000, guid: 706266f0342ad3a41801a852597cdde4, type: 2}
+  - {fileID: 2100000, guid: d8ac0d0123f31354dbc3125652f1cb8f, type: 2}
+  - {fileID: 2100000, guid: 5c4e05a58c838ec4a8d15a21dee9e5bb, type: 2}
+  - {fileID: 2100000, guid: bc8a204868050914cb12fda187e73cdc, type: 2}
+  - {fileID: 2100000, guid: f742670c2204a8740bef232e177d75cc, type: 2}
+  - {fileID: 2100000, guid: 7784ff086c7af8f4eb3ba50c63a4df41, type: 2}
 --- !u!1 &4751921587085626754
 GameObject:
   m_ObjectHideFlags: 0
@@ -2007,6 +2022,7 @@ GameObject:
   - component: {fileID: 1162759317476635082}
   - component: {fileID: 3289627212816565032}
   - component: {fileID: 5790788850681237031}
+  - component: {fileID: 6029513478514629994}
   m_Layer: 0
   m_Name: Left Hand Model
   m_TagString: Untagged
@@ -2066,6 +2082,48 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   gripInputActionReference: {fileID: 6558622148059887818, guid: c348712bda248c246b8c49b3db54643f, type: 3}
   triggerInputActionReference: {fileID: -4289430672226363583, guid: c348712bda248c246b8c49b3db54643f, type: 3}
+--- !u!23 &6029513478514629994
+MeshRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5842916103062141563}
+  m_Enabled: 1
+  m_CastShadows: 1
+  m_ReceiveShadows: 1
+  m_DynamicOccludee: 1
+  m_StaticShadowCaster: 0
+  m_MotionVectors: 1
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 2
+  m_RayTraceProcedural: 0
+  m_RenderingLayerMask: 1
+  m_RendererPriority: 0
+  m_Materials:
+  - {fileID: 0}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 1
+  m_SelectedEditorRenderState: 3
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 0
+  m_AdditionalVertexStreams: {fileID: 0}
 --- !u!1 &6054695666766700661
 GameObject:
   m_ObjectHideFlags: 0
@@ -2236,6 +2294,7 @@ GameObject:
   - component: {fileID: 7250992862268220045}
   - component: {fileID: 4765750899482349152}
   - component: {fileID: 754903281092860096}
+  - component: {fileID: 2263112566755579572}
   m_Layer: 0
   m_Name: Right Hand Model
   m_TagString: Untagged
@@ -2295,6 +2354,48 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   gripInputActionReference: {fileID: -1758520528963094988, guid: c348712bda248c246b8c49b3db54643f, type: 3}
   triggerInputActionReference: {fileID: 7904272356298805229, guid: c348712bda248c246b8c49b3db54643f, type: 3}
+--- !u!23 &2263112566755579572
+MeshRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6993098194207048116}
+  m_Enabled: 1
+  m_CastShadows: 1
+  m_ReceiveShadows: 1
+  m_DynamicOccludee: 1
+  m_StaticShadowCaster: 0
+  m_MotionVectors: 1
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 2
+  m_RayTraceProcedural: 0
+  m_RenderingLayerMask: 1
+  m_RendererPriority: 0
+  m_Materials:
+  - {fileID: 0}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 1
+  m_SelectedEditorRenderState: 3
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 0
+  m_AdditionalVertexStreams: {fileID: 0}
 --- !u!1 &7001929874243290985
 GameObject:
   m_ObjectHideFlags: 0
@@ -2824,6 +2925,11 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: dd74f2184c5592e42a88d193f6b6253e, type: 3}
+--- !u!23 &102649018108433837 stripped
+MeshRenderer:
+  m_CorrespondingSourceObject: {fileID: -7511558181221131132, guid: dd74f2184c5592e42a88d193f6b6253e, type: 3}
+  m_PrefabInstance: {fileID: 1634027236187687209}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &1236099973057785538 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: dd74f2184c5592e42a88d193f6b6253e, type: 3}
