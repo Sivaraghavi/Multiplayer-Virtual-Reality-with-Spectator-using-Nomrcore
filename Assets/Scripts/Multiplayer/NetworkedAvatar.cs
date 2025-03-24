@@ -1,110 +1,4 @@
-
 /*
-
-using Normal.Realtime;
-using Normal.Realtime.Serialization;
-using TMPro;
-using UnityEngine;
-
-public class NetworkedAvatar : RealtimeComponent<NetworkedAvatar.Model>
-{
-    #region Model Definition
-    public class Model : RealtimeModel
-    {
-        private string _playerName;
-        private int _colorIndex;
-
-        public string playerName
-        {
-            get => _playerName;
-            set
-            {
-                if (_playerName == value) return;
-                _playerName = value;
-                // If your version requires marking the model as dirty,
-                // you may need to add that call here.
-            }
-        }
-
-        public int colorIndex
-        {
-            get => _colorIndex;
-            set
-            {
-                if (_colorIndex == value) return;
-                _colorIndex = value;
-                // Mark model as dirty if required.
-            }
-        }
-
-        protected override void Write(WriteStream stream, StreamContext context)
-        {
-            stream.WriteStructString(_playerName);
-            stream.WriteStructInt(_colorIndex);
-        }
-
-        protected override void Read(ReadStream stream, StreamContext context)
-        {
-            _playerName = stream.ReadStructString();
-            _colorIndex = stream.ReadStructInt();
-        }
-
-        protected override int WriteLength(StreamContext context)
-        {
-            return System.Text.Encoding.UTF8.GetByteCount(_playerName) + sizeof(int);
-        }
-    }
-    #endregion
-
-    #region References
-    [SerializeField] TextMeshProUGUI nameTag;
-    [SerializeField] MeshRenderer[] bodyMeshes;
-    [SerializeField] SkinnedMeshRenderer[] bodySkinnedMeshes;
-    [SerializeField] Material[] colorMaterials;
-    #endregion
-
-    #region Model Handling
-    protected override void OnRealtimeModelReplaced(Model previousModel, Model currentModel)
-    {
-        UpdateVisuals();
-    }
-    #endregion
-
-    #region Visual Updates
-    private void UpdateVisuals()
-    {
-        nameTag.text = model.playerName;
-
-        if (model.colorIndex >= 0 && model.colorIndex < colorMaterials.Length)
-        {
-            foreach (var mesh in bodyMeshes)
-            {
-                var materials = mesh.materials;
-                materials[0] = colorMaterials[model.colorIndex];
-                mesh.materials = materials;
-            }
-            foreach (var skinnedMesh in bodySkinnedMeshes)
-            {
-                Material[] materials = skinnedMesh.materials;
-                materials[0] = colorMaterials[model.colorIndex];
-                skinnedMesh.materials = materials;
-            }
-        }
-    }
-    #endregion
-
-    #region Initialization
-    void Start()
-    {
-        if (realtimeView.isOwnedLocallySelf)
-        {
-            model.playerName = CustomizationData.PlayerName;
-            model.colorIndex = PlayerPrefs.GetInt("ColorIndex", 0);
-        }
-    }
-    #endregion
-}
-*//*
 
 using Normal.Realtime;
 using Normal.Realtime.Serialization;
@@ -117,25 +11,24 @@ public class NetworkedAvatar : RealtimeComponent<NetworkedAvatar.AvatarModel>
     [RealtimeModel]
     public partial class AvatarModel
     {
-        [RealtimeProperty(1, true, true)] public string playerName;
-        [RealtimeProperty(2, true, true)] public int colorIndex;
+        [RealtimeProperty(1, true, true)] private string _playerName;
+        [RealtimeProperty(2, true, true)] private int _colorIndex;
     }
     #endregion
 
     #region References
-    [SerializeField] private TextMeshProUGUI nameTag;
-    [SerializeField] private MeshRenderer[] bodyMeshes;
-    [SerializeField] private SkinnedMeshRenderer[] bodySkinnedMeshes;
-    [SerializeField] private Material[] colorMaterials;
+    [SerializeField] private TextMeshProUGUI nameTag;           // Assign in Inspector: Name tag UI element
+    [SerializeField] private MeshRenderer[] bodyMeshes;         // Assign in Inspector: Avatar mesh renderers
+    [SerializeField] private SkinnedMeshRenderer[] bodySkinnedMeshes; // Assign in Inspector: Skinned mesh renderers (if any)
+    [SerializeField] private Material[] colorMaterials;         // Assign in Inspector: Array of materials (e.g., Red, Blue, etc.)
     #endregion
 
     #region Model Handling
     private void Awake()
     {
-        // Ensure references are set up
         if (nameTag == null || (bodyMeshes.Length == 0 && bodySkinnedMeshes.Length == 0) || colorMaterials.Length == 0)
         {
-            Debug.LogError("NetworkedAvatar is missing required references!");
+            Debug.LogError("NetworkedAvatar: Missing required references in Inspector!");
         }
     }
 
@@ -143,13 +36,11 @@ public class NetworkedAvatar : RealtimeComponent<NetworkedAvatar.AvatarModel>
     {
         if (previousModel != null)
         {
-            // Unsubscribe from previous model events
             previousModel.playerNameDidChange -= UpdatePlayerName;
             previousModel.colorIndexDidChange -= UpdateColorIndex;
         }
         if (currentModel != null)
         {
-            // Subscribe to new model events
             currentModel.playerNameDidChange += UpdatePlayerName;
             currentModel.colorIndexDidChange += UpdateColorIndex;
             UpdateVisuals(); // Initial update
@@ -172,11 +63,11 @@ public class NetworkedAvatar : RealtimeComponent<NetworkedAvatar.AvatarModel>
             Material selectedMaterial = colorMaterials[model.colorIndex];
             foreach (var mesh in bodyMeshes)
             {
-                mesh.material = selectedMaterial;
+                mesh.material = new Material(selectedMaterial); // Instance material to avoid shared changes
             }
             foreach (var skinnedMesh in bodySkinnedMeshes)
             {
-                skinnedMesh.material = selectedMaterial;
+                skinnedMesh.material = new Material(selectedMaterial);
             }
         }
     }
@@ -189,7 +80,7 @@ public class NetworkedAvatar : RealtimeComponent<NetworkedAvatar.AvatarModel>
         {
             model.playerName = CustomizationData.PlayerName;
             model.colorIndex = PlayerPrefs.GetInt("ColorIndex", 0);
-            UpdateVisuals(); // Ensure local visuals update immediately
+            UpdateVisuals(); // Immediate local update
         }
     }
     #endregion
