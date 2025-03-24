@@ -9,14 +9,20 @@ public class PreGameCustomization : MonoBehaviour
 {
     public TMP_InputField nameInputField;
     public TMP_Dropdown colorDropdown;
-    public Button readyButton;
+    public TMP_InputField roomInputField; // Add this in Inspector
+    public Button createRoomButton; // Add this in Inspector
+    public Button joinRoomButton;
+   // public Button readyButton;
     public Material[] colorMaterials; // Assign 5 materials in inspector
 
     void Start()
     {
         InitializeColorDropdown();
         nameInputField.onValueChanged.AddListener(UpdatePlayerName);
-        readyButton.onClick.AddListener(OnReadyClicked);
+        colorDropdown.onValueChanged.AddListener(UpdatePlayerColor);
+        createRoomButton.onClick.AddListener(OnCreateRoomClicked);
+        joinRoomButton.onClick.AddListener(OnJoinRoomClicked);
+       //eadyButton.onClick.AddListener(OnReadyClicked);
     }
 
     void InitializeColorDropdown()
@@ -38,11 +44,31 @@ public class PreGameCustomization : MonoBehaviour
             CustomizationData.PlayerMaterial = colorMaterials[colorIndex];
         }
     }
+    void OnCreateRoomClicked()
+    {
+        SaveCustomizationData();
+        PlayerPrefs.SetString("RoomName", roomInputField.text);
+        PlayerPrefs.SetInt("IsCreatingRoom", 1); // Flag for creating
+        SceneManager.LoadScene("1_CommonRoom");
+    }
 
-    void OnReadyClicked()
+    void OnJoinRoomClicked()
+    {
+        SaveCustomizationData();
+        PlayerPrefs.SetString("RoomName", roomInputField.text);
+        PlayerPrefs.SetInt("IsCreatingRoom", 0); // Flag for joining
+        SceneManager.LoadScene("1_CommonRoom");
+    }
+    void SaveCustomizationData()
+    {
+        PlayerPrefs.SetString("PlayerName", CustomizationData.PlayerName);
+        PlayerPrefs.SetInt("ColorIndex", colorDropdown.value);
+    }
+
+    /*void OnReadyClicked()
     {
         PlayerPrefs.SetString("PlayerName", CustomizationData.PlayerName);
         PlayerPrefs.SetInt("ColorIndex", colorDropdown.value);
         SceneManager.LoadScene("1_CommonRoom");
-    }
+    }*/
 }
