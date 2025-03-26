@@ -33,72 +33,35 @@ public class AvatarInitializer : MonoBehaviour
 }*/
 
 using UnityEngine;
-using Normal.Realtime;
 
 public class AvatarInitializer : MonoBehaviour
 {
-    public Realtime realtime; // Assign in Inspector
-    public GameObject avatarPrefab; // Your networked avatar prefab
-    public Material[] colorMaterials; // Assign in Inspector
-
-    private bool hasSpawnedAvatar = false;
+    [Header("References")]
+    public MeshRenderer[] bodyMeshes; // Assign the avatar's mesh renderers in the Inspector
 
     void Start()
     {
-        if (realtime == null)
+        // Create material instances to avoid shared materials
+        foreach (var renderer in bodyMeshes)
         {
-            Debug.LogError("Realtime component not assigned!");
-            return;
+            renderer.material = new Material(renderer.material);
         }
 
-        // Load saved customization data
-        CustomizationData.PlayerName = PlayerPrefs.GetString("PlayerName", "Player");
-        int colorIndex = PlayerPrefs.GetInt("ColorIndex", 0);
-        CustomizationData.PlayerMaterial = colorMaterials[colorIndex];
-
-        // Subscribe to connection events
-        realtime.didConnectToRoom += DidConnectToRoom;
-
-        // Connect to the room specified by the player
-        string roomName = PlayerPrefs.GetString("RoomName", "defaultRoom");
-        realtime.Connect(roomName);
+        // Apply customization data to the avatar
+        ApplyCustomization();
     }
 
-    private void DidConnectToRoom(Realtime room)
+    void Update()
     {
-        Debug.Log("Connected to room: " + room.room.name); // Use room.room.name instead of roomName
-        if (!hasSpawnedAvatar)
-        {
-            SpawnAvatar();
-            hasSpawnedAvatar = true;
-        }
+        // Optional: Update in real-time if customization changes during pre-game
+        ApplyCustomization();
     }
 
-    public void SpawnAvatar()
+    private void ApplyCustomization()
     {
-        var options = new Realtime.InstantiateOptions
+        foreach (var mesh in bodyMeshes)
         {
-            ownedByClient = true,
-            preventOwnershipTakeover = true,
-            useInstance = realtime
-        };
-
-        GameObject avatar = Realtime.Instantiate(avatarPrefab.name, options);
-        if (avatar == null)
-        {
-            Debug.LogError("Failed to spawn avatar!");
-        }
-        else
-        {
-            Debug.Log("Avatar spawned successfully!");
-        }
-    }
-
-    void OnDestroy()
-    {
-        if (realtime != null)
-        {
-            realtime.didConnectToRoom -= DidConnectToRoom;
+            mesh.material.color = CustomizationData.PlayerColor; // Use PlayerColor instead of PlayerMaterial
         }
     }
 }

@@ -1464,16 +1464,13 @@ MonoBehaviour:
   nameTag: {fileID: 5781858142099983418}
   bodyMeshes:
   - {fileID: 102649018108433837}
-  bodySkinnedMeshes:
-  - {fileID: 2014822948198847731}
-  - {fileID: 7127092909984707}
   colorMaterials:
-  - {fileID: 2100000, guid: 706266f0342ad3a41801a852597cdde4, type: 2}
-  - {fileID: 2100000, guid: d8ac0d0123f31354dbc3125652f1cb8f, type: 2}
-  - {fileID: 2100000, guid: 5c4e05a58c838ec4a8d15a21dee9e5bb, type: 2}
   - {fileID: 2100000, guid: bc8a204868050914cb12fda187e73cdc, type: 2}
-  - {fileID: 2100000, guid: f742670c2204a8740bef232e177d75cc, type: 2}
+  - {fileID: 2100000, guid: 706266f0342ad3a41801a852597cdde4, type: 2}
+  - {fileID: 2100000, guid: 5c4e05a58c838ec4a8d15a21dee9e5bb, type: 2}
   - {fileID: 2100000, guid: 7784ff086c7af8f4eb3ba50c63a4df41, type: 2}
+  - {fileID: 2100000, guid: d8ac0d0123f31354dbc3125652f1cb8f, type: 2}
+  - {fileID: 2100000, guid: f742670c2204a8740bef232e177d75cc, type: 2}
 --- !u!1 &4751921587085626754
 GameObject:
   m_ObjectHideFlags: 0

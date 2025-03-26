@@ -1,7 +1,7 @@
 {
   "dependencies": {
     "com.nobi.roundedcorners": "https://github.com/ReForge-Mode/Unity_UI_Rounded_Corners.git",
-    "com.normalvr.normcore": "2.15.1",
+    "com.normalvr.normcore": "2.15.2",
     "com.unity.collab-proxy": "2.7.1",
     "com.unity.feature.development": "1.0.1",
     "com.unity.feature.vr": "1.0.0",

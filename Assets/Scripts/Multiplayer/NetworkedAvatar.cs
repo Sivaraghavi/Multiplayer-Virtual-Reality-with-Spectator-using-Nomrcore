@@ -1,87 +1,157 @@
 /*
-
+using UnityEngine;
 using Normal.Realtime;
 using Normal.Realtime.Serialization;
 using TMPro;
-using UnityEngine;
 
-public class NetworkedAvatar : RealtimeComponent<NetworkedAvatar.AvatarModel>
+[RealtimeModel]
+public partial class AvatarModel
 {
-    #region Model Definition
-    [RealtimeModel]
-    public partial class AvatarModel
-    {
-        [RealtimeProperty(1, true, true)] private string _playerName;
-        [RealtimeProperty(2, true, true)] private int _colorIndex;
-    }
-    #endregion
+    [RealtimeProperty(1, true, true)] private string _playerName;
+    [RealtimeProperty(2, true, true)] private int _colorIndex;
+}
 
-    #region References
-    [SerializeField] private TextMeshProUGUI nameTag;           // Assign in Inspector: Name tag UI element
-    [SerializeField] private MeshRenderer[] bodyMeshes;         // Assign in Inspector: Avatar mesh renderers
-    [SerializeField] private SkinnedMeshRenderer[] bodySkinnedMeshes; // Assign in Inspector: Skinned mesh renderers (if any)
-    [SerializeField] private Material[] colorMaterials;         // Assign in Inspector: Array of materials (e.g., Red, Blue, etc.)
-    #endregion
+[RequireComponent(typeof(RealtimeView), typeof(RealtimeTransform))]
+public class NetworkedAvatar : RealtimeComponent<AvatarModel>
+{
+    public TextMeshProUGUI nameTag;
+    public MeshRenderer[] bodyMeshes;
 
-    #region Model Handling
-    private void Awake()
+    private void Start()
     {
-        if (nameTag == null || (bodyMeshes.Length == 0 && bodySkinnedMeshes.Length == 0) || colorMaterials.Length == 0)
+        if (realtimeView.isOwnedLocallySelf)
         {
-            Debug.LogError("NetworkedAvatar: Missing required references in Inspector!");
+            model.playerName = PlayerPrefs.GetString("PlayerName", "Player");
+            model.colorIndex = PlayerPrefs.GetInt("ColorIndex", 0);
         }
+
+        // Initial update
+        UpdateAvatarAppearance();
     }
 
     protected override void OnRealtimeModelReplaced(AvatarModel previousModel, AvatarModel currentModel)
     {
         if (previousModel != null)
         {
-            previousModel.playerNameDidChange -= UpdatePlayerName;
-            previousModel.colorIndexDidChange -= UpdateColorIndex;
+            // No need to unsubscribe from events since we’re not using custom delegates
         }
+
         if (currentModel != null)
         {
-            currentModel.playerNameDidChange += UpdatePlayerName;
-            currentModel.colorIndexDidChange += UpdateColorIndex;
-            UpdateVisuals(); // Initial update
+            // Update appearance when the model is set or replaced
+            UpdateAvatarAppearance();
+            // Since Normcore syncs automatically, we rely on Update() or a custom sync method
         }
     }
-    #endregion
 
-    #region Visual Updates
-    private void UpdatePlayerName(AvatarModel model, string value) => UpdateVisuals();
-    private void UpdateColorIndex(AvatarModel model, int value) => UpdateVisuals();
-
-    private void UpdateVisuals()
+    private void Update()
     {
-        if (model == null) return;
-
-        nameTag.text = model.playerName;
-
-        if (model.colorIndex >= 0 && model.colorIndex < colorMaterials.Length)
+        // Continuously check for model updates (less efficient but works for now)
+        if (model != null)
         {
-            Material selectedMaterial = colorMaterials[model.colorIndex];
+            UpdateAvatarAppearance();
+        }
+    }
+
+    private void UpdateAvatarAppearance()
+    {
+        if (nameTag != null && model != null)
+        {
+            nameTag.text = model.playerName;
+        }
+
+        if (bodyMeshes != null && model != null)
+        {
+            Material mat = new Material(Shader.Find("Standard"));
+            mat.color = GetColorFromIndex(model.colorIndex);
             foreach (var mesh in bodyMeshes)
             {
-                mesh.material = new Material(selectedMaterial); // Instance material to avoid shared changes
-            }
-            foreach (var skinnedMesh in bodySkinnedMeshes)
-            {
-                skinnedMesh.material = new Material(selectedMaterial);
+                if (mesh != null)
+                {
+                    mesh.material = mat;
+                }
             }
         }
     }
-    #endregion
 
-    #region Initialization
+    private Color GetColorFromIndex(int index)
+    {
+        switch (index)
+        {
+            case 0: return Color.red;
+            case 1: return Color.blue;
+            case 2: return Color.green;
+            case 3: return Color.yellow;
+            case 4: return Color.cyan;
+            default: return Color.white;
+        }
+    }
+}*/
+
+using UnityEngine;
+using Normal.Realtime;
+using Normal.Realtime.Serialization;
+using TMPro;
+
+[RealtimeModel]
+public partial class AvatarModel
+{
+    [RealtimeProperty(1, true, true)] private string _playerName;
+    [RealtimeProperty(2, true, true)] private int _colorIndex;
+}
+
+[RequireComponent(typeof(RealtimeView), typeof(RealtimeTransform))]
+public class NetworkedAvatar : RealtimeComponent<AvatarModel>
+{
+    public TextMeshProUGUI nameTag;
+    public MeshRenderer[] bodyMeshes;
+    [SerializeField] private Material[] colorMaterials; // Assign materials in Inspector (Red, Blue, Green, Yellow, Cyan)
+
     private void Start()
     {
         if (realtimeView.isOwnedLocallySelf)
         {
-            model.playerName = CustomizationData.PlayerName;
+            model.playerName = PlayerPrefs.GetString("PlayerName", "Player");
             model.colorIndex = PlayerPrefs.GetInt("ColorIndex", 0);
-            UpdateVisuals(); // Immediate local update
+        }
+
+        UpdateAvatarAppearance();
+    }
+
+    protected override void OnRealtimeModelReplaced(AvatarModel previousModel, AvatarModel currentModel)
+    {
+        if (currentModel != null)
+        {
+            UpdateAvatarAppearance();
         }
     }
-    #endregion
-}*/
+
+    private void Update()
+    {
+        if (model != null)
+        {
+            UpdateAvatarAppearance();
+        }
+    }
+
+    private void UpdateAvatarAppearance()
+    {
+        if (nameTag != null && model != null)
+        {
+            nameTag.text = model.playerName;
+        }
+
+        if (bodyMeshes != null && model != null && colorMaterials != null && colorMaterials.Length > 0)
+        {
+            int index = Mathf.Clamp(model.colorIndex, 0, colorMaterials.Length - 1);
+            Material mat = colorMaterials[index];
+            foreach (var mesh in bodyMeshes)
+            {
+                if (mesh != null)
+                {
+                    mesh.material = mat;
+                }
+            }
+        }
+    }
+}
