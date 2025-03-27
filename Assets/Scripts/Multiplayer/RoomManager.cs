@@ -185,6 +185,7 @@ public class RoomManager : MonoBehaviour
 
     // Assign this in the Inspector
     public NormcoreAppSettings normcoreAppSettings;
+    public GameObject xrRig;
 
     void Start()
     {
@@ -211,7 +212,7 @@ public class RoomManager : MonoBehaviour
         _realtime.Connect(roomName);
     }
 
-    private void DidConnectToRoom(Realtime realtime)
+    /*private void DidConnectToRoom(Realtime realtime)
     {
         var options = new Realtime.InstantiateOptions
         {
@@ -236,8 +237,80 @@ public class RoomManager : MonoBehaviour
         {
             ShowPopup("Joined room successfully!");
         }
-    }
+    }*/
 
+    private void DidConnectToRoom(Realtime realtime)
+    {
+        var options = new Realtime.InstantiateOptions
+        {
+            ownedByClient = true,
+            preventOwnershipTakeover = false,
+            destroyWhenLastClientLeaves = true,
+            useInstance = _realtime
+        };
+
+        Debug.Log("Attempting to instantiate PlayerPrefab from Resources");
+        GameObject avatarInstance = Realtime.Instantiate("PlayerPrefab", Vector3.zero, Quaternion.identity, options);
+        if (avatarInstance == null)
+        {
+            Debug.LogError("Failed to instantiate PlayerPrefab!");
+            return;
+        }
+
+        if (xrRig != null)
+        {
+            Debug.Log($"XR Rig found: {xrRig.name}");
+            Transform cameraOffset = xrRig.transform.Find("Camera Offset");
+            if (cameraOffset != null)
+            {
+                XRAvatarSync sync = avatarInstance.GetComponent<XRAvatarSync>();
+                if (sync != null)
+                {
+                    sync.xrHead = cameraOffset.Find("Main Camera");
+                    sync.xrLeftHand = cameraOffset.Find("Left Controller");
+                    sync.xrRightHand = cameraOffset.Find("Right Controller");
+
+                    Debug.Log($"XR Head: {(sync.xrHead != null ? sync.xrHead.name : "null")}");
+                    Debug.Log($"XR Left Hand: {(sync.xrLeftHand != null ? sync.xrLeftHand.name : "null")}");
+                    Debug.Log($"XR Right Hand: {(sync.xrRightHand != null ? sync.xrRightHand.name : "null")}");
+
+                    if (sync.xrHead == null || sync.xrLeftHand == null || sync.xrRightHand == null)
+                    {
+                        Debug.LogError("One or more XR Rig child transforms not found! Check XR Rig hierarchy.");
+                    }
+                    else
+                    {
+                        Debug.Log("XR Rig linked to RealtimeAvatar");
+                    }
+                }
+                else
+                {
+                    Debug.LogError("XRAvatarSync component missing on instantiated avatar!");
+                }
+            }
+            else
+            {
+                Debug.LogError("Camera Offset not found under XR Rig!");
+            }
+        }
+        else
+        {
+            Debug.LogError("XR Rig not assigned in RoomManager Inspector!");
+        }
+
+        _roomState = gameObject.AddComponent<RoomStateComponent>();
+        _roomState.SetRoomManager(this);
+
+        if (IsCreator)
+        {
+            _roomState.SetCurrentScene("1_CommonRoom");
+            ShowPopup("Room created successfully!");
+        }
+        else
+        {
+            ShowPopup("Joined room successfully!");
+        }
+    }
     private void DidDisconnectFromRoom(Realtime realtime)
     {
         ShowPopup("Disconnected from room!");
