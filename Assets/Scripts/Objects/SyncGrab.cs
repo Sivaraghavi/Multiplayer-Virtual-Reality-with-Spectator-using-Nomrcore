@@ -45,6 +45,47 @@ public class SyncGrab : MonoBehaviour
             }
         }
     }
+}*//*
+
+using UnityEngine;
+using Normal.Realtime;
+using UnityEngine.XR.Interaction.Toolkit;
+using UnityEngine.XR.Interaction.Toolkit.Interactables;
+
+public class SyncGrab : MonoBehaviour
+{
+    private RealtimeTransform _realtimeTransform;
+    private XRGrabInteractable _grabInteractable;
+
+    void Awake()
+    {
+        _realtimeTransform = GetComponent<RealtimeTransform>();
+        _grabInteractable = GetComponent<XRGrabInteractable>();
+        _grabInteractable.selectEntered.AddListener(OnGrabbed);
+        _grabInteractable.selectExited.AddListener(OnReleased);
+    }
+
+    void OnDestroy()
+    {
+        _grabInteractable.selectEntered.RemoveListener(OnGrabbed);
+        _grabInteractable.selectExited.RemoveListener(OnReleased);
+    }
+
+    private void OnGrabbed(SelectEnterEventArgs args)
+    {
+        _realtimeTransform.RequestOwnership();
+        Rigidbody rb = GetComponent<Rigidbody>();
+        if (rb != null) rb.isKinematic = true;
+        Debug.Log("Object grabbed, ownership taken");
+    }
+
+    private void OnReleased(SelectExitEventArgs args)
+    {
+        _realtimeTransform.ClearOwnership();
+        Rigidbody rb = GetComponent<Rigidbody>();
+        if (rb != null) rb.isKinematic = false;
+        Debug.Log("Object released, ownership cleared");
+    }
 }*/
 
 using UnityEngine;
