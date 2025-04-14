@@ -27,7 +27,7 @@ public class SceneSwitchPanel : MonoBehaviour
 
 using UnityEngine;
 using UnityEngine.UI;
-using System.Collections; // Added for IEnumerator
+using System.Collections; 
 
 public class SceneSwitchPanel : MonoBehaviour
 {
@@ -61,7 +61,7 @@ public class SceneSwitchPanel : MonoBehaviour
 
         commonRoomButton.onClick.AddListener(() => _roomManager.SwitchScene("1_CommonRoom"));
         showroomButton.onClick.AddListener(() => _roomManager.SwitchScene("2_Showroom"));
-        classroomButton.onClick.AddListener(() => _roomManager.SwitchScene("3_Classroom"));
+        classroomButton.onClick.AddListener(() => _roomManager.SwitchScene("3_Clinic"));
         natureButton.onClick.AddListener(() => _roomManager.SwitchScene("4_Nature"));
     }
 }

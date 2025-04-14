@@ -836,7 +836,7 @@ Transform:
   m_GameObject: {fileID: 326853357}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: 0.109045, z: -0, w: -0.9940368}
-  m_LocalPosition: {x: -2.68, y: 0.52, z: 4.43}
+  m_LocalPosition: {x: -2.45, y: 0.79, z: 4.48}
   m_LocalScale: {x: 0.20000008, y: 0.2, z: 0.20000008}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -2405,6 +2405,80 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 795594882}
   m_CullTransparentMesh: 1
+--- !u!1001 &905806973
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: -8679921383154817045, guid: 9a657f04668ac71438a9a5c1f8de497d, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -2.3082967
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 9a657f04668ac71438a9a5c1f8de497d, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.1
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 9a657f04668ac71438a9a5c1f8de497d, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 3.3434
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 9a657f04668ac71438a9a5c1f8de497d, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 9a657f04668ac71438a9a5c1f8de497d, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 9a657f04668ac71438a9a5c1f8de497d, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 9a657f04668ac71438a9a5c1f8de497d, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 9a657f04668ac71438a9a5c1f8de497d, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 9a657f04668ac71438a9a5c1f8de497d, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 9a657f04668ac71438a9a5c1f8de497d, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -1853094968961178454, guid: 9a657f04668ac71438a9a5c1f8de497d, type: 3}
+      propertyPath: m_BackGroundColor.a
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: -1853094968961178454, guid: 9a657f04668ac71438a9a5c1f8de497d, type: 3}
+      propertyPath: m_BackGroundColor.b
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -1853094968961178454, guid: 9a657f04668ac71438a9a5c1f8de497d, type: 3}
+      propertyPath: m_BackGroundColor.g
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -1853094968961178454, guid: 9a657f04668ac71438a9a5c1f8de497d, type: 3}
+      propertyPath: m_BackGroundColor.r
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 9a657f04668ac71438a9a5c1f8de497d, type: 3}
+      propertyPath: m_Name
+      value: AR_Art_Gallery_01_Baked
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects:
+    - {fileID: 65702495048144492, guid: 9a657f04668ac71438a9a5c1f8de497d, type: 3}
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 9a657f04668ac71438a9a5c1f8de497d, type: 3}
 --- !u!1 &981707161
 GameObject:
   m_ObjectHideFlags: 0
@@ -2886,13 +2960,7 @@ MonoBehaviour:
   popupText: {fileID: 528638608}
   normcoreAppSettings: {fileID: 11400000, guid: 5b5431b4f4967bb47ac5bbf167aad357, type: 2}
   xrRig: {fileID: 440032287}
-  objectPrefabs:
-  - {fileID: 3519352614430458989, guid: d91ab547e5ced9142b6b046472732d25, type: 3}
-  - {fileID: 8437217463435326953, guid: 59842e771907d504ca2850c90b138354, type: 3}
-  - {fileID: 2083891405546117368, guid: 7f6a1247d2869ac44a29472e7419a751, type: 3}
-  - {fileID: 4549510651128567891, guid: db5d4549ed35777449ce089a992741df, type: 3}
-  - {fileID: 2737981410357669677, guid: e657ee5eb3aa2124999198a5294b4591, type: 3}
-  - {fileID: 794498936781616967, guid: 80a505a87d8146144b54527d8c70f12e, type: 3}
+  objectPrefabNames: []
 --- !u!114 &1041049122
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3682,47 +3750,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1184141090}
   m_CullTransparentMesh: 0
---- !u!21 &1190854496
-Material:
-  serializedVersion: 8
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_Name: UI/RoundedCorners/IndependentRoundedCorners
-  m_Shader: {fileID: 4800000, guid: d3beb88e61f88ca4393acdefb005fa70, type: 3}
-  m_Parent: {fileID: 0}
-  m_ModifiedSerializedProperties: 0
-  m_ValidKeywords: []
-  m_InvalidKeywords: []
-  m_LightmapFlags: 4
-  m_EnableInstancingVariants: 0
-  m_DoubleSidedGI: 0
-  m_CustomRenderQueue: -1
-  stringTagMap: {}
-  disabledShaderPasses: []
-  m_LockedProperties: 
-  m_SavedProperties:
-    serializedVersion: 3
-    m_TexEnvs:
-    - _MainTex:
-        m_Texture: {fileID: 0}
-        m_Scale: {x: 1, y: 1}
-        m_Offset: {x: 0, y: 0}
-    m_Ints: []
-    m_Floats:
-    - _ColorMask: 15
-    - _Stencil: 0
-    - _StencilComp: 8
-    - _StencilOp: 0
-    - _StencilReadMask: 255
-    - _StencilWriteMask: 255
-    - _UseUIAlphaClip: 0
-    m_Colors:
-    - _halfSize: {r: 175, g: 99, b: 0, a: 0}
-    - _r: {r: 17, g: 17, b: 17, a: 17}
-    - _rect2props: {r: 0.000015258789, g: -0.000030517578, b: 181.72646, a: 181.72646}
-  m_BuildTextureStacks: []
 --- !u!1 &1209311487
 GameObject:
   m_ObjectHideFlags: 0
@@ -4477,7 +4504,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 7fbe37f3b7251c7409cf06da239c010d, type: 2}
+  - {fileID: 2100000, guid: dcafb7a5e6d749d4992542adad605de5, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -4515,8 +4542,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1338256825}
   serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.173, y: 0.289, z: 3.85}
+  m_LocalRotation: {x: 0, y: 0.7071068, z: 0, w: 0.7071068}
+  m_LocalPosition: {x: -3.76, y: 0.289, z: 3.85}
   m_LocalScale: {x: 333.52975, y: 76.19436, z: 212.10483}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -4527,7 +4554,7 @@ Transform:
   - {fileID: 1402783615}
   - {fileID: 630230982}
   m_Father: {fileID: 2122132060}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 90, z: 0}
 --- !u!65 &1338256829
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -5344,6 +5371,47 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1738233162}
   m_CullTransparentMesh: 1
+--- !u!21 &1848021134
+Material:
+  serializedVersion: 8
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: UI/RoundedCorners/IndependentRoundedCorners
+  m_Shader: {fileID: 4800000, guid: d3beb88e61f88ca4393acdefb005fa70, type: 3}
+  m_Parent: {fileID: 0}
+  m_ModifiedSerializedProperties: 0
+  m_ValidKeywords: []
+  m_InvalidKeywords: []
+  m_LightmapFlags: 4
+  m_EnableInstancingVariants: 0
+  m_DoubleSidedGI: 0
+  m_CustomRenderQueue: -1
+  stringTagMap: {}
+  disabledShaderPasses: []
+  m_LockedProperties: 
+  m_SavedProperties:
+    serializedVersion: 3
+    m_TexEnvs:
+    - _MainTex:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    m_Ints: []
+    m_Floats:
+    - _ColorMask: 15
+    - _Stencil: 0
+    - _StencilComp: 8
+    - _StencilOp: 0
+    - _StencilReadMask: 255
+    - _StencilWriteMask: 255
+    - _UseUIAlphaClip: 0
+    m_Colors:
+    - _halfSize: {r: 175, g: 99, b: 0, a: 0}
+    - _r: {r: 17, g: 17, b: 17, a: 17}
+    - _rect2props: {r: 0.000015258789, g: -0.000030517578, b: 181.72646, a: 181.72646}
+  m_BuildTextureStacks: []
 --- !u!1 &1912601487
 GameObject:
   m_ObjectHideFlags: 0
@@ -6419,7 +6487,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_Material: {fileID: 1190854496}
+  m_Material: {fileID: 1848021134}
   m_Color: {r: 0, g: 0, b: 0, a: 0.9019608}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
@@ -9725,7 +9793,7 @@ Transform:
   m_GameObject: {fileID: 3801023213041332448}
   serializedVersion: 2
   m_LocalRotation: {x: 6.123234e-17, y: 1, z: -6.123234e-17, w: -6.123234e-17}
-  m_LocalPosition: {x: 1.21, y: 1.3716003, z: 11.23}
+  m_LocalPosition: {x: 1.21, y: 1.3716003, z: 9.31}
   m_LocalScale: {x: 1, y: 1, z: 2}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -10973,7 +11041,7 @@ Transform:
   m_GameObject: {fileID: 4666398748735163763}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0.7071068, z: -0, w: -0.7071068}
-  m_LocalPosition: {x: 2.311388, y: 1.3716003, z: 7.81}
+  m_LocalPosition: {x: 2.31, y: 1.3716003, z: 7.75}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -11270,7 +11338,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 7fbe37f3b7251c7409cf06da239c010d, type: 2}
+  - {fileID: 2100000, guid: dcafb7a5e6d749d4992542adad605de5, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -13639,7 +13707,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 7fbe37f3b7251c7409cf06da239c010d, type: 2}
+  - {fileID: 2100000, guid: dcafb7a5e6d749d4992542adad605de5, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -15198,3 +15266,4 @@ SceneRoots:
   - {fileID: 1580520662}
   - {fileID: 1173211194}
   - {fileID: 543450652892564280}
+  - {fileID: 905806973}
