@@ -12,7 +12,7 @@ EditorBuildSettings:
     path: Assets/Scenes/Flow/1_CommonRoom.unity
     guid: df654854dc8317f42b3a02f06327df1a
   - enabled: 1
-    path: Assets/Scenes/Flow/2_Showroom.unity
+    path: Assets/Scenes/Flow/showroom.unity
     guid: cd6c752038057d34190909e788d60817
   - enabled: 1
     path: Assets/Scenes/Flow/3_Clinic1.unity
