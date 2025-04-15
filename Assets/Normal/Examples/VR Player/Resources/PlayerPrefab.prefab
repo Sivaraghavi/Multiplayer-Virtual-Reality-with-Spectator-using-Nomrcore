@@ -1349,9 +1349,9 @@ GameObject:
   m_Component:
   - component: {fileID: 4685506773357298424}
   - component: {fileID: 2085998590594566853}
+  - component: {fileID: 7770683413923631290}
   - component: {fileID: 2921905460172049086}
   - component: {fileID: 7997272052352895255}
-  - component: {fileID: 7770683413923631290}
   - component: {fileID: 73168188025896657}
   m_Layer: 0
   m_Name: PlayerPrefab
@@ -1419,6 +1419,21 @@ MonoBehaviour:
     component: {fileID: 1610167148098184015}
   - componentID: 3
     component: {fileID: 3915650345258950498}
+--- !u!114 &7770683413923631290
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4406895684837039098}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 08dff4fb3b027234c8a2562e96aa0846, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _head: {fileID: 8708614728836190955}
+  _leftHand: {fileID: 8447185100728214421}
+  _rightHand: {fileID: 2798097115086067478}
 --- !u!114 &2921905460172049086
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1452,6 +1467,8 @@ MonoBehaviour:
   nameTag: {fileID: 5781858142099983418}
   bodyMeshes:
   - {fileID: 102649018108433837}
+  headTransform: {fileID: 0}
+  nameTagOffset: {x: 0, y: 0.2, z: 0}
   colorMaterials:
   - {fileID: 2100000, guid: bc8a204868050914cb12fda187e73cdc, type: 2}
   - {fileID: 2100000, guid: 706266f0342ad3a41801a852597cdde4, type: 2}
@@ -1459,21 +1476,6 @@ MonoBehaviour:
   - {fileID: 2100000, guid: 7784ff086c7af8f4eb3ba50c63a4df41, type: 2}
   - {fileID: 2100000, guid: d8ac0d0123f31354dbc3125652f1cb8f, type: 2}
   - {fileID: 2100000, guid: f742670c2204a8740bef232e177d75cc, type: 2}
---- !u!114 &7770683413923631290
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4406895684837039098}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 08dff4fb3b027234c8a2562e96aa0846, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _head: {fileID: 8708614728836190955}
-  _leftHand: {fileID: 8447185100728214421}
-  _rightHand: {fileID: 2798097115086067478}
 --- !u!114 &73168188025896657
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1481,7 +1483,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4406895684837039098}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 298df315acc85d74c9878747f0b88baf, type: 3}
   m_Name: 
