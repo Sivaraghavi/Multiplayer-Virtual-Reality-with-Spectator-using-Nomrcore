@@ -1,4 +1,4 @@
-using UnityEngine;
+/*using UnityEngine;
 using Normal.Realtime;
 using UnityEngine.XR.Interaction.Toolkit; // For XR Rig
 
@@ -32,4 +32,4 @@ public class XRAvatarSync : MonoBehaviour
 
         Debug.Log("XR Avatar Sync initialized");
     }
-}
+}*/
