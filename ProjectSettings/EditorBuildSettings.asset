@@ -12,14 +12,14 @@ EditorBuildSettings:
     path: Assets/Scenes/Flow/1_CommonRoom.unity
     guid: df654854dc8317f42b3a02f06327df1a
   - enabled: 1
-    path: Assets/Scenes/Flow/showroom.unity
-    guid: cd6c752038057d34190909e788d60817
+    path: Assets/Scenes/Flow/2_Showroom.unity
+    guid: 1eb76d4b2913acb479e70b6085b6ccf9
   - enabled: 1
-    path: Assets/Scenes/Flow/3_Clinic1.unity
-    guid: f04c9ba9d9c296f4fb7a0d606f2e08e4
+    path: Assets/Scenes/Flow/3_Clinic.unity
+    guid: 20427b76510b6d944a46c34715f1e2dc
   - enabled: 1
-    path: Assets/Scenes/Flow/4_Nature1.unity
-    guid: 8356470a1bd237746a98dc8b1afedd9d
+    path: Assets/Scenes/Flow/4_Nature.unity
+    guid: 0c251fd2d8f58804baa85b37fb5f0209
   m_configObjects:
     Unity.XR.Oculus.Settings: {fileID: 11400000, guid: bfa1182bd221b4ca89619141f66f1260, type: 2}
     Unity.XR.WindowsMR.Settings: {fileID: 11400000, guid: dc5a169419fa04987b057f65238cf3ba, type: 2}
