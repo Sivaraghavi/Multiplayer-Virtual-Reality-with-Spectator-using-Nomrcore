@@ -65,7 +65,7 @@ public class PreGameCustomization : MonoBehaviour
 }
 */
 
-using UnityEngine;
+/*using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 using TMPro;
@@ -141,6 +141,89 @@ public class PreGameCustomization : MonoBehaviour
         PlayerPrefs.SetString("RoomName", roomName);
         PlayerPrefs.SetInt("IsCreator", 0);
         Debug.Log($"Joining room: {roomName}");
+        SceneManager.LoadScene("1_CommonRoom");
+    }
+
+    void SaveCustomizationData()
+    {
+        PlayerPrefs.SetString("PlayerName", CustomizationData.PlayerName);
+        PlayerPrefs.SetInt("ColorIndex", CustomizationData.ColorIndex);
+    }
+}*/
+
+// PreGameCustomization.cs
+// Handles pre-game UI for name, color, and room selection
+using UnityEngine;
+using UnityEngine.SceneManagement;
+using UnityEngine.UI;
+using TMPro;
+using Normal.Realtime;
+using System.Collections.Generic;
+
+public class PreGameCustomization : MonoBehaviour
+{
+    public TMP_InputField nameInputField;
+    public TMP_Dropdown colorDropdown;
+    public TMP_InputField roomInputField;
+    public Button createRoomButton;
+    public Button joinRoomButton;
+    public Material[] colorMaterials; // Assign 5 materials in Inspector (Red, Blue, Green, Yellow, Cyan)
+
+    void Start()
+    {
+        if (!ValidateUIComponents()) return;
+
+        InitializeColorDropdown();
+        nameInputField.onValueChanged.AddListener(UpdatePlayerName);
+        colorDropdown.onValueChanged.AddListener(UpdatePlayerColor);
+        createRoomButton.onClick.AddListener(OnCreateRoomClicked);
+        joinRoomButton.onClick.AddListener(OnJoinRoomClicked);
+    }
+
+    bool ValidateUIComponents()
+    {
+        bool isValid = true;
+        if (nameInputField == null) { Debug.LogError("Name Input Field is not assigned!"); isValid = false; }
+        if (colorDropdown == null) { Debug.LogError("Color Dropdown is not assigned!"); isValid = false; }
+        if (roomInputField == null) { Debug.LogError("Room Input Field is not assigned!"); isValid = false; }
+        if (createRoomButton == null) { Debug.LogError("Create Room Button is not assigned!"); isValid = false; }
+        if (joinRoomButton == null) { Debug.LogError("Join Room Button is not assigned!"); isValid = false; }
+        if (colorMaterials == null || colorMaterials.Length < 5) { Debug.LogError("Color Materials array is not properly assigned!"); isValid = false; }
+        return isValid;
+    }
+
+    void InitializeColorDropdown()
+    {
+        colorDropdown.ClearOptions();
+        colorDropdown.AddOptions(new List<string> { "Red", "Blue", "Green", "Yellow", "Cyan" });
+    }
+
+    void UpdatePlayerName(string newName)
+    {
+        CustomizationData.PlayerName = string.IsNullOrEmpty(newName) ? "Player" : newName;
+    }
+
+    void UpdatePlayerColor(int colorIndex)
+    {
+        CustomizationData.ColorIndex = colorIndex;
+        CustomizationData.PlayerColor = colorMaterials[colorIndex].color;
+    }
+
+    void OnCreateRoomClicked()
+    {
+        SaveCustomizationData();
+        string roomName = string.IsNullOrEmpty(roomInputField.text) ? "DefaultRoom" : roomInputField.text;
+        PlayerPrefs.SetString("RoomName", roomName);
+        PlayerPrefs.SetInt("IsCreator", 1);
+        SceneManager.LoadScene("1_CommonRoom");
+    }
+
+    void OnJoinRoomClicked()
+    {
+        SaveCustomizationData();
+        string roomName = string.IsNullOrEmpty(roomInputField.text) ? "DefaultRoom" : roomInputField.text;
+        PlayerPrefs.SetString("RoomName", roomName);
+        PlayerPrefs.SetInt("IsCreator", 0);
         SceneManager.LoadScene("1_CommonRoom");
     }
 

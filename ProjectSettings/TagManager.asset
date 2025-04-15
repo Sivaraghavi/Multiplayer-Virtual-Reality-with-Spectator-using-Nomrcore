@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Anchor
   - xrrigtag
+  - XRRig
   layers:
   - Default
   - TransparentFX
