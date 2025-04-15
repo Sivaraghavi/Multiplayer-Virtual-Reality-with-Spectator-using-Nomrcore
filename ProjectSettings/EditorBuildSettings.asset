@@ -15,10 +15,10 @@ EditorBuildSettings:
     path: Assets/Scenes/Flow/2_Showroom.unity
     guid: cd6c752038057d34190909e788d60817
   - enabled: 1
-    path: Assets/Scenes/Flow/3_Clinic.unity
+    path: Assets/Scenes/Flow/3_Clinic1.unity
     guid: f04c9ba9d9c296f4fb7a0d606f2e08e4
   - enabled: 1
-    path: Assets/Scenes/Flow/4_Nature.unity
+    path: Assets/Scenes/Flow/4_Nature1.unity
     guid: 8356470a1bd237746a98dc8b1afedd9d
   m_configObjects:
     Unity.XR.Oculus.Settings: {fileID: 11400000, guid: bfa1182bd221b4ca89619141f66f1260, type: 2}
