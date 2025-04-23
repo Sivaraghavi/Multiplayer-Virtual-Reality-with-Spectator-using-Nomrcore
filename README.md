@@ -15,6 +15,9 @@ Demo Video (Spectator Mode): [Watch Demo](https://youtu.be/cqKkjL-icfQ)
 
 R&D Document: ./RND.docx
 
+R&D Document: [RND.docx](./RND.docx)
+
+
 Knowledge Transfer Document: ./KnowledgeTransfer.docx
 
 ## Quick Start
