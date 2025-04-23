@@ -22,7 +22,7 @@ Knowledge Transfer Document: [Knowledge Transfer.docx](./KnowledgeTransfer.docx)
 ## Quick Start
 
 1. Prerequisites:
-   - Unity Editor: Version `2022.3.55f1` (Specify the exact version used)
+   - Unity Editor: Version `2022.3.55f1` 
    - Blender (for 3D modeling)
    - Normcore (for Networking) 
    - Git (Ensure Git LFS is installed)
