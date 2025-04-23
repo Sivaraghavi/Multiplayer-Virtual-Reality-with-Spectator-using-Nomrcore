@@ -13,12 +13,9 @@ Demo Video (VR Multiplayer): [Watch Demo](https://youtu.be/Rlizt6l1Gu4)
 
 Demo Video (Spectator Mode): [Watch Demo](https://youtu.be/cqKkjL-icfQ)
 
-R&D Document: ./RND.docx
-
 R&D Document: [RND.docx](./RND.docx)
 
-
-Knowledge Transfer Document: ./KnowledgeTransfer.docx
+Knowledge Transfer Document: [Knowledge Transfer.docx](./KnowledgeTransfer.docx)
 
 ## Quick Start
 
