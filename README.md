@@ -110,9 +110,7 @@ MyProject/                     # Root directory
 │   ├── Prefabs/               # Prefab templates
 │   │   ├── AvatarPrefab.prefab    # Player avatar
 │   │   ├── SpherePrefab.prefab    # Networked sphere
-│   │   └── CubePrefab.prefab      # Networked cube
-│   ├── Art/                   # Models, textures, sprites
-│   ├── Audio/                 # Sound effects & music
+│   │   └── CubePrefab.prefab      # Networked cub
 │   └── Materials/             # Shaders & materials
 │       ├── Red.mat            # Red avatar material
 │       ├── Blue.mat           # Blue avatar material
