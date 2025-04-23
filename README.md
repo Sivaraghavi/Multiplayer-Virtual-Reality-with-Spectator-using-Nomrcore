@@ -9,7 +9,7 @@ This project presents a virtual reality multiplayer system where users can colla
 
 The goal is to enhance collaborative learning and interactive showcases in fields like training, simulation, and virtual showrooms. The intended audience includes XR developers, educators, and simulation designers.
 
-[![Watch the video](https://img.youtube.com/vi/QL8vlpLQBxA/maxresdefault.jpg)](https://www.youtube.com/watch?v=QL8vlpLQBxA)
+[![Watch the video](./Documents/Keyboard.png)](https://youtu.be/Rlizt6l1Gu4)
 
 Demo Video (VR Multiplayer): [Watch Demo](https://youtu.be/Rlizt6l1Gu4)
 
