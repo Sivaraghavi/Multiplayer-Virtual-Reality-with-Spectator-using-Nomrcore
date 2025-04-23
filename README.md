@@ -1,6 +1,4 @@
-# Virtual Reality Multiplayer with AR Spectator using Normocore 
- 
-# [Project Title]
+# Multiplayer Virtual Reality with Spectator using Normcore 
 
 An immersive multiplayer experience in virtual environments with support for  spectatorship
 
@@ -32,36 +30,60 @@ Knowledge Transfer Document: ./KnowledgeTransfer.docx
 2. Clone the Repository:
 
    ```bash
-   git clone https://github.com/Sivaraghavi/Virtual-Reality-with-Augmented-Reality-Spectator-using-Nomrcore-
-   cd Virtual-Reality-with-Augmented-Reality-Spectator-using-Nomrcore-
+   git clone https://github.com/Sivaraghavi/Multiplayer-Virtual-Reality-with-Spectator-using-Nomrcore.git
+   cd Multiplayer-Virtual-Reality-with-Spectator-using-Nomrcore
    ```
 
 3. Open the cloned folder using Unity Hub.
 
-4. Run:
-   - 
-   - Open the main scene: `Virtual-Reality-with-Augmented-Reality-Spectator-using-Nomrcore-\Assets\Scenes\Flow` 
-   - Click the Play button ▶️ in the Unity Editor.
+## 4. Run:
+
+1. **Create a Normcore Account:**
+   - Go to [https://normcore.io](https://normcore.io) and sign up.
+   - Create a new app in your dashboard.
+   - Copy the generated **App ID** (API key).
+
+2. **Add API Key to Unity Project:**
+   - In the Unity Editor, open the asset:
+     ```
+     Assets/Scenes/Flow/New Normcore App Settings.asset
+     ```
+   - Paste the App ID into the **App Key** field in the Inspector window.
+
+3. **Open the Main Scene:**
+   - Load the following scene from Unity Hub or Project Window:
+     ```
+     Assets/Scenes/Flow/Multiplayer-Virtual-Reality-with-Spectator-using-Normcore.unity
+     ```
+
+4. **Play the Scene:**
+   - Click the ▶️ **Play** button in the Unity Editor to start the multiplayer VR experience.
+
 
 ---
-
 ## Features
 
-List the main functionalities or highlights of your project.
-
-- Feature 1 (e.g., Real-time multiplayer using Photon PUN 2)
-- Feature 2 (e.g., Dynamic day/night cycle affecting gameplay)
-- Feature 3 (e.g., Procedurally generated level layouts)
-- Feature 4 (e.g., Custom shader for water effects)
-- Feature 5 (e.g., Integration with backend for leaderboards)
+- 🔗 **Real-time multiplayer using Normcore:** Seamless interaction between multiple VR users in a shared environment.
+- 🎭 **Avatar customization with name tags:** Users can choose colors and personalize name tags visible to others.
+- 📦 **Synchronized object interaction:** Objects behave consistently across all connected users with low latency.
+- 🌐 **Dynamic environment switching:** Host can switch scenes (Hospital, Nature, Showroom) for all users in real-time.
+- 👁️ **VR Spectator mode:** Allows one or more users to observe the session from a third-person perspective in VR.
 
 ---
-
 ## Dependencies <!-- (Extra Tools/Frameworks/Packages) -->
 
-- Unity: TextMesh Pro, Cinemachine, ML Agents, ...
-- External: Photon PUN 2, NewtonsoftJson, Normcore, Google AI Speech, ...
-- etc.
+- **Unity Packages:**
+  - XR Interaction Toolkit
+  - OpenXR Plugin
+  - TextMesh Pro
+
+- **External Tools:**
+  - **Normcore** – for real-time multiplayer networking
+  - **Blender** – for 3D modeling and asset creation
+
+- **Other Tools:**
+  - Git LFS – for syncing large files like models and scenes
+
 
 ---
 
@@ -71,34 +93,52 @@ List the main functionalities or highlights of your project.
 MyProject/                     # Root directory
 ├── Assets/                    # Core Unity assets
 │   ├── Scenes/                # .unity scene files
+│   │   ├── 0_PreGame.unity    # Customization UI scene
+│   │   ├── 1_CommonRoom.unity # Main multiplayer room
+│   │   ├── 2_Showroom.unity   # Showroom environment
+│   │   ├── 3_Clinic.unity     # Clinic environment
+│   │   └── 4_Nature.unity     # Nature environment
 │   ├── Scripts/               # C# scripts
+│   │   ├── PreGameCustomization.cs # UI for name/color/room
+│   │   ├── CustomizationData.cs    # Stores player data
+│   │   ├── NetworkedAvatar.cs      # Avatar sync and XR Rig linking
+│   │   ├── RoomManager.cs          # Room and scene management
+│   │   ├── SceneSwitchPanel.cs     # Creator scene-switch UI
+│   │   └── SyncGrab.cs             # Networked object grabbing
 │   ├── Prefabs/               # Prefab templates
+│   │   ├── AvatarPrefab.prefab    # Player avatar
+│   │   ├── SpherePrefab.prefab    # Networked sphere
+│   │   └── CubePrefab.prefab      # Networked cube
 │   ├── Art/                   # Models, textures, sprites
 │   ├── Audio/                 # Sound effects & music
 │   └── Materials/             # Shaders & materials
+│       ├── Red.mat            # Red avatar material
+│       ├── Blue.mat           # Blue avatar material
+│       ├── Green.mat          # Green avatar material
+│       ├── Yellow.mat         # Yellow avatar material
+│       └── Cyan.mat           # Cyan avatar material
 ├── Builds/                    # Compiled game builds
-├── Demo.mp4                   # Demo video
 ├── RND.docx                   # R&D document
 ├── KnowledgeTransfer.docx     # Knowledge-Transfer document
-├── Packages/                  # Unity package dependencies and manifests
+├── Packages/                  # Unity package dependencies
 ├── ProjectSettings/           # Unity configuration files
 ├── .gitignore                 # Git ignore rules
-└── README.md                  # Project overview and setup instructions (This file)
+└── README.md                  # This file
 ```
 
 ---
 
 ## Configuration
 
-<!-- List any important settings that can be adjusted or need to be modified. -->
-<!-- remove / add more if needed -->
-
 | Setting | Location | Description | Default Value |
-|---------|----------|-------------|---------------|
-| Player Speed | `PlayerController` Script | Adjusts the movement speed of the player. | `5.0` |
-| API Key/Endpoint | `Config/NetworkConfig.asset` | Base URL for the backend server. | `""` |
-| Graphics Quality | `Project Settings > Quality` | Selects the rendering quality level. | `High` |
-| (add more)        | (component / asset)             | (what it controls)                          | (value) | 
+| --- | --- | --- | --- |
+| Normcore App Key | `Assets/Scenes/Flow/New Normcore App Settings.asset` | App Key for Normcore multiplayer networking. Obtain from normcore.io dashboard. | `""` |
+| Avatar Color Materials | `PreGameCustomization` Script (Inspector) | Array of materials for avatar color options (Red, Blue, Green, Yellow, Cyan). | 5 materials in `Assets/Materials` |
+| Object Prefab Names | `RoomManager` Script (Inspector) | List of networked object prefabs to spawn (e.g., SpherePrefab, CubePrefab). | `["SpherePrefab", "CubePrefab"]` |
+| Popup Fade Duration | `RoomManager` Script (`FadePopup` method) | Duration of popup message fade-in/out animation. | `0.5f` |
+| XR Rig Tag | `XR Origin (XR Rig)` GameObject | Tag used to find XR Rig for avatar linking. | `XRRig` |
+| Avatar Spawn Timeout | `RoomManager` Script (`CheckAvatarSpawn` method) | Time to wait for avatar spawning before error. | `5.0f` |
+| Name Tag Offset | `NetworkedAvatar` Script (Inspector) | Offset of name tag above avatar’s head. | `(0, 0.2, 0)` |
 
 ---
 
