@@ -144,7 +144,7 @@ MyProject/                     # Root directory
 
 ## Contact
 
-- **Intern:** [Sivaraghavi U.R.](https://www.linkedin.com/in/username/)
-  - Email: [sivaraghavi6103@gmail.com](sivaraghavi6103@gmail.com)
+- **Intern:** [Sivaraghavi U.R.](https://www.linkedin.com/in/sivaraghavi-u-r-15b1b5227/)
+- Email: [sivaraghavi6103@gmail.com](sivaraghavi6103@gmail.com)
 
 - **Mentor:** Praveen Krishna
